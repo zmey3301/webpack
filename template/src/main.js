@@ -23,6 +23,7 @@ Vue.use(Adaptive, adaptiveConf)
 Vue.use(http)
 {{/http}}
 Vue.config.productionTip = false
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   {{#router}}
