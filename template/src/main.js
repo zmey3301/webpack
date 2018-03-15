@@ -7,10 +7,22 @@ import App from './App'
 {{#router}}
 import router from './router'
 {{/router}}
-
+{{#http}}
+// Custom http plugin
+import http from './plugins/http'
+{{/http}}
+{{#adaptive}}
+// Imports for adaptive
+import Adaptive from 'vue-adaptive'
+import {adaptive as adaptiveConf} from '../config/app.config'
+  // Setting adaptive plugin
+Vue.use(Adaptive, adaptiveConf)
+{{/adaptive}}
+{{#http}}
+// Setting http plugin
+Vue.use(http)
+{{/http}}
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   {{#router}}
