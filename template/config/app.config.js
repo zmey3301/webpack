@@ -64,3 +64,4 @@ export const http = {
   mode        : 'no-cors',
   dataType    : 'form'
 }
+{{/http}}
