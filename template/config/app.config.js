@@ -54,13 +54,14 @@ export const adaptive = {
     setDevice: true
   }
 }
-{{#adaptive}}
+{{/adaptive}}
 
 {{#http}}
 export const http = {
-  credentials	: 'include',
+  credentials	: 'same-origin',
   url					: 'https://api.stackexchange.com/2.2/search',
   method			: 'GET',
   mode        : 'no-cors',
   dataType    : 'form'
 }
+{{/http}}
