@@ -1,10 +1,11 @@
-{ 
+{
   "noEscape": true,
   "name": "test",
   "description": "A Vue.js project",
   "author": "CircleCI",
   "build": "runtime",
   "router": false,
+  "adaptive": true,
   "lint": true,
   "lintConfig": "standard",
   "unit": true,
