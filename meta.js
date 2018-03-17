@@ -74,6 +74,11 @@ module.exports = {
             type: 'confirm',
             message: 'Install vue-router?',
         },
+        vuex: {
+            when: 'isNotTest',
+            type: 'confirm',
+            message: 'Install vuex?'
+        },
         adaptive: {
             when: 'isNotTest',
             type: 'confirm',
@@ -172,7 +177,6 @@ module.exports = {
         'config/test.env.js': 'unit || e2e',
         'build/webpack.test.conf.js': "unit && runner === 'karma'",
         'test/unit/**/*': 'unit',
-        'src/plugins/http.js': 'http',
         'test/unit/index.js': "unit && runner === 'karma'",
         'test/unit/jest.conf.js': "unit && runner === 'jest'",
         'test/unit/karma.conf.js': "unit && runner === 'karma'",
@@ -180,6 +184,8 @@ module.exports = {
         'test/unit/setup.js': "unit && runner === 'jest'",
         'test/e2e/**/*': 'e2e',
         'src/router/**/*': 'router',
+        'src/plugins/http.js': 'http',
+        'src/store/**/*': 'vuex',
     },
     complete: function(data, { chalk }) {
         const green = chalk.green
