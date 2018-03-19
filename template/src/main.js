@@ -16,7 +16,7 @@ import {adaptive as adaptiveConf} from '../config/app.config'
 {{/adaptive}}
 {{#vuex}}
 import Vuex from 'vuex'
-import store from './store'
+import Store from './store'
 {{/vuex}}
 {{#adaptive}}
 // Setting adaptive plugin
@@ -27,7 +27,9 @@ Vue.use(Adaptive, adaptiveConf)
 Vue.use(http)
 {{/http}}
 {{#vuex}}
+// Setting store
 Vue.use(Vuex)
+const store = new Vuex.Store(Store)
 {{/vuex}}
 Vue.config.productionTip = false
 export default new Vue({
