@@ -29,7 +29,7 @@
     "lodash": "^4.17.5"{{#router}},
     "vue-router": "^3.0.1"{{/router}}{{#adaptive}},
     "vue-adaptive": "^0.0.6"{{/adaptive}}{{#http}},
-    "base-64": "^0.1.0"{{/http}}{{#vuex}},
+    "base-64": "^1.0.0"{{/http}}{{#vuex}},
     "vuex": "^3.0.1"{{/vuex}}
   },
   "devDependencies": {

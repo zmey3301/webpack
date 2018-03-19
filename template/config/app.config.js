@@ -1,23 +1,17 @@
 // Here you can store configs for all components and plugins
 {{#adaptive}}
 export const adaptive = {
-  'desktop': {
-    // if: device.desktop,
-    from: {
-      width: 1007
-    },
-    setDevice: true
-  },
   'desktop:wide': {
     rem: 10,
     from: {
-      width: 1008
+      width: 1352
     }
   },
   'desktop:thin': {
-    // if: device.desktop,
-    // rem: 10,
     k: .75,
+    from: {
+      width: 1008
+    },
     base: {
       width: 1008
     },
@@ -36,8 +30,7 @@ export const adaptive = {
     k: 1,
     base: {
       width: 752
-    },
-    setDevice: true
+    }
   },
   'mobile': {
     rem: 10,
@@ -50,8 +43,7 @@ export const adaptive = {
     k: 1,
       base: {
       width: 305
-    },
-    setDevice: true
+    }
   }
 }
 {{/adaptive}}
