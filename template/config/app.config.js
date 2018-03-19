@@ -26,10 +26,6 @@ export const adaptive = {
     },
     to: {
       width: 1008
-    },
-    k: 1,
-    base: {
-      width: 752
     }
   },
   'mobile': {
@@ -39,10 +35,6 @@ export const adaptive = {
     },
     to: {
       width: 751
-    },
-    k: 1,
-      base: {
-      width: 305
     }
   }
 }
