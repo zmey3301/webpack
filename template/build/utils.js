@@ -3,6 +3,8 @@ const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
+const styleImports = require('../config/app.config').styleImports
+const _ = require('lodash')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -13,6 +15,20 @@ exports.assetsPath = function (_path) {
 }
 
 exports.cssLoaders = function (options) {
+  let getPath = (assetPath) => assetPath.startsWith('@') ? path.resolve(__dirname, '../src', assetPath.substring(1)) : path.resolve(__dirname, assetPath)
+  function loadImports (imports) {
+    let result
+    if (Array.isArray(imports)) {
+      let assets = []
+      _.forEach(imports, function(asset) {
+        assets.push(getPath(asset))
+      })
+      result = assets
+    } else {
+      result = getPath(imports)
+    }
+    return result
+  }
   options = options || {}
 
   const cssLoader = {
@@ -34,12 +50,35 @@ exports.cssLoaders = function (options) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
+      let loaderOptions = _.assign({}, loaderOptions, {
+        sourceMap: options.sourceMap
+      })
+      let importOptions = {}
+      if (styleImports.hasOwnProperty(loader)) {
+        let imports = loadImports(styleImports[loader])
+        switch (loader) {
+          case 'stylus':
+            importOptions.import = imports
+            loaderOptions = _.assign(loaderOptions, importOptions)
+            break
+          case 'sass':
+            importOptions.resources = imports
+            break
+          case 'less':
+            importOptions.patterns = imports
+            break
+        }
+      }
       loaders.push({
         loader: loader + '-loader',
-        options: Object.assign({}, loaderOptions, {
-          sourceMap: options.sourceMap
-        })
+        options: loaderOptions
       })
+      if (loader !== 'stylus') {
+        loaders.push({
+          loader: loader === 'sass' ? 'sass-resource-loader' : 'styles-resource-loader',
+          options: importOptions
+        })
+      }
     }
 
     // Extract CSS when that option is specified

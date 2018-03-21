@@ -1,6 +1,19 @@
 // Here you can store configs for all components and plugins
+module.exports.styleImports = {
+  /*
+  * You can use string or array of string.
+  * String can starts with @ - that means that path is relative to src folder (vue root).
+  * Or you can write relative path from build directory
+  * !Warning: It is better to use arrays instead of one file with imports 'cause imports will slow down build.
+  * Imported files must contain ONLY preprocessor info (variables, mixins, e.t.c.)
+  ********************************************************************************************
+  * stylus: [],
+  * less: '@assets/less/style.less'
+  * sass: '../src/assets/sass/style.sass'
+   */
+}
 {{#adaptive}}
-export const adaptive = {
+module.exports.adaptive = {
   'desktop:wide': {
     rem: 10,
     from: {
@@ -41,7 +54,7 @@ export const adaptive = {
 {{/adaptive}}
 
 {{#http}}
-export const http = {
+module.exports.http = {
   credentials	: 'same-origin',
   url					: 'https://api.stackexchange.com/2.2/search',
   method			: 'GET',
