@@ -8,8 +8,9 @@ module.exports.styleImports = {
   * Imported files must contain ONLY preprocessor info (variables, mixins, e.t.c.)
   ********************************************************************************************
   * stylus: [],
-  * less: '@assets/less/style.less'
-  * sass: '../src/assets/sass/style.sass'
+  * less: '@assets/less/style.less',
+  * sass: '../src/assets/sass/style.sass',
+  * scss: '@assets/scss/style.scss'
    */
 }
 {{#adaptive}}

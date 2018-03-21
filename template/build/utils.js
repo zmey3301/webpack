@@ -62,6 +62,9 @@ exports.cssLoaders = function (options) {
             loaderOptions = _.assign(loaderOptions, importOptions)
             break
           case 'sass':
+            if (typeof loaderOptions === 'undefined' || !loaderOptions.indentedSyntax) {
+              imports = styleImports.hasOwnProperty('scss') ? loadImports(styleImports.scss) : []
+            }
             importOptions.resources = imports
             break
           case 'less':
@@ -73,7 +76,7 @@ exports.cssLoaders = function (options) {
         loader: loader + '-loader',
         options: loaderOptions
       })
-      if (loader !== 'stylus') {
+      if (loader !== 'stylus' && !_.isEmpty(importOptions)) {
         loaders.push({
           loader: loader === 'sass' ? 'sass-resource-loader' : 'styles-resource-loader',
           options: importOptions
