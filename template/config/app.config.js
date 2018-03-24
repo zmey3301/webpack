@@ -3,7 +3,7 @@ module.exports.styleImports = {
   /*
   * You can use string or array of string.
   * String can starts with @ - that means that path is relative to src folder (vue root).
-  * Or you can write relative path from build directory
+  * You always can write path relative to build directory instead.
   * !Warning: It is better to use arrays instead of one file with imports 'cause imports will slow down build.
   * Imported files must contain ONLY preprocessor info (variables, mixins, e.t.c.)
   ********************************************************************************************
