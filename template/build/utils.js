@@ -50,7 +50,7 @@ exports.cssLoaders = function (options) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
-      let loaderOptions = _.assign({}, loaderOptions, {
+      loaderOptions = _.assign(loaderOptions || {}, {
         sourceMap: options.sourceMap
       })
       let importOptions = {}
