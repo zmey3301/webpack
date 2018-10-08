@@ -1,19 +1,26 @@
 {
   "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
-    }],
-    "stage-2"
+    ["@babel/preset-env", {
+      "modules": false
+    }]
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"]{{#if_or unit e2e}},
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
+    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
+    "@babel/plugin-proposal-do-expressions",
+    ["@babel/plugin-proposal-class-properties", { "loose": false }]
+  ]{{#if_or unit e2e}},
   "env": {
     "test": {
-      "presets": ["env", "stage-2"]{{#if_eq runner "karma"}},
-      "plugins": ["transform-vue-jsx", "istanbul"]{{/if_eq}}{{#if_eq runner "jest"}},
-      "plugins": ["transform-vue-jsx", "transform-es2015-modules-commonjs", "dynamic-import-node"]{{/if_eq}}
+      "presets": ["@babel/preset-env"],
+      "plugins": [{{#if_eq runner karma}}
+        "istanbul",{{/if_eq}}
+        ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
+        ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
+        "@babel/plugin-proposal-do-expressions",
+        ["@babel/plugin-proposal-class-properties", { "loose": false }]
+      ]
     }
   }{{/if_or}}
 }
