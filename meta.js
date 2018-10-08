@@ -19,16 +19,16 @@ module.exports = {
         before: addTestAnswers
     },
     helpers: {
-        if_or(v1, v2, options) {
-
+        if_or (v1, v2, options) {
             if (v1 || v2) {
             return options.fn(this)
-        }
+            }
 
-        return options.inverse(this)
-    },
-    template_version() {
-        return templateVersion
+            return options.inverse(this)
+        },
+
+        template_version () {
+            return templateVersion
         },
     },
 
@@ -74,6 +74,11 @@ module.exports = {
             type: 'confirm',
             message: 'Install vue-router?',
         },
+        pug: {
+            when: 'isNotTest',
+            type: 'confirm',
+            message: 'Install Jade PUG?'
+        },
         vuex: {
             when: 'isNotTest',
             type: 'confirm',
@@ -82,7 +87,8 @@ module.exports = {
         adaptive: {
             when: 'isNotTest',
             type: 'confirm',
-            message: 'Install vue-adaptive? More info at https://github.com/zmey3301/vue-adaptive'
+            message: 'Install vue-adaptive?',
+            link: 'https://github.com/zmey3301/vue-adaptive'
         },
         http: {
             when: 'isNotTest',
